@@ -1,0 +1,14 @@
+<table>
+  <thead>
+    <tr>
+      <ng-container *ngFor="let header of headers">
+        <th>{{header}}</th>
+      </ng-container>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let row of rows">
+        <td *ngFor="let header of headers">{{getData(row, header)}}</td>
+    </tr>
+  </tbody>
+</table>
