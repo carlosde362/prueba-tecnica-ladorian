@@ -1,0 +1,17 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+}
+
+.input {
+  border-radius: 10px;
+  padding: 1rem;
+  border: 1px solid #ced4da;
+  outline: none;
+  transition: border 0.3s;
+}
+
+input:hover {
+  border: 2px solid #80bdff;
+}

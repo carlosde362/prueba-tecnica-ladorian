@@ -1,0 +1,9 @@
+<label>mi label</label>
+<input [type]="type"
+       [(ngModel)]="value"
+       (ngModelChange)="emitValue()"
+       [placeholder]="placeholder"
+       [disabled]="isDisabled"
+       [pattern]="regex"
+       [required]="required"
+       [autocomplete]="autocomplete ? 'on': 'off'" class="input">
