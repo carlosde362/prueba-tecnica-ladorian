@@ -1,0 +1,7 @@
+<div class="controls">
+  <button (click)="previousPage()" class="control" [disabled]="isFirstPage"><<</button>
+  <ng-container *ngFor="let page of pages">
+    <button (click)="goToPage(page)" class="control" [class.page-active]="currentPage === page">{{page}}</button>
+  </ng-container>
+  <button (click)="nextPage()" class="control" [disabled]="isLastPage">>></button>
+</div>

@@ -1,0 +1,20 @@
+:host {
+  width: 100%;
+}
+.controls {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.controls .control {
+  padding: .5rem;
+  width: 2rem;
+  outline: none;
+  border: none;
+}
+
+.page-active {
+  background-color: #80bdff;
+}
