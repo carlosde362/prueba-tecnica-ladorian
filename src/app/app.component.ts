@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
+import {TranslateService} from "./core/services/translate.service";
 
 @Component({
   selector: 'app-root',
@@ -10,5 +11,7 @@ import { RouterOutlet } from '@angular/router';
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  title = 'prueba-tecnica-ladorian';
+  constructor(private translateService: TranslateService) {
+    this.translateService.changeLang();
+  }
 }
