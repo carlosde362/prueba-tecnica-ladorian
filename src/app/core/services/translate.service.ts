@@ -18,4 +18,8 @@ export class TranslateService {
   changeLang(lang: string = this.DEFAULT_LANG): void {
     this.translate.use(lang);
   }
+
+  instant(text: string): string {
+    return this.translate.instant(text);
+  }
 }
