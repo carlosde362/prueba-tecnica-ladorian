@@ -25,7 +25,9 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles/global.css"
+              "src/styles/global.css",
+              "src/styles/variables.css",
+              "src/styles/layout.css"
             ],
             "scripts": []
           },
@@ -84,7 +86,9 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles/global.css"
+              "src/styles/global.css",
+              "src/styles/variables.css",
+              "src/styles/layout.css"
             ],
             "scripts": []
           }
