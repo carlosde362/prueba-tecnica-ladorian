@@ -1,0 +1,26 @@
+<ng-container *ngIf="paginatedCountries; else spinner">
+
+  <section class="flex flex-row width-full justify-around align-center card gap-6" [formGroup]="form">
+    <app-input [placeholder]="'labels.search_country' | translate"
+               [label]="'labels.country' | translate"
+               type="search"
+               formControlName="country"
+               class="width-50"
+               (valueChange)="filterCountry()"></app-input>
+    <app-select [options]="availableContinent"
+                [multiple]="true"
+                [stringTranslate]="'countries'"
+                [label]="'labels.continent' | translate"
+                class="width-50"
+                (selectionChange)="changeContinent($event)"
+                [placeholder]="'Filtra'"></app-select>
+  </section>
+  <app-table [headers]="headers"
+             [stringTranslate]="'labels'"
+             [rows]="paginatedCountries"></app-table>
+  <app-paginator [totalItems]="totalItems" (sliceItems)="changePaginator($event)" [itemsPerPage]="ITEMS_PER_PAGE"></app-paginator>
+</ng-container>
+
+<ng-template #spinner>
+  <app-spinner></app-spinner>
+</ng-template>
