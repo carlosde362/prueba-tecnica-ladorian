@@ -1,23 +1,37 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-
-import { InputComponent } from './input.component';
+import { TestBed, ComponentFixture } from '@angular/core/testing';
+import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+import { InputComponent, typesInput } from './input.component';
 
 describe('InputComponent', () => {
   let component: InputComponent;
   let fixture: ComponentFixture<InputComponent>;
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      imports: [InputComponent]
-    })
-    .compileComponents();
-    
+  beforeEach(() => {
+    TestBed.configureTestingModule({
+      declarations: [InputComponent],
+      imports: [CommonModule, FormsModule],
+    });
+
     fixture = TestBed.createComponent(InputComponent);
     component = fixture.componentInstance;
-    fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('should create the component', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should emit value on valueChange', () => {
+    spyOn(component.valueChange, 'emit');
+    const testValue = 'TestValue';
+    component.value = testValue;
+    component.emitValue();
+
+    expect(component.valueChange.emit).toHaveBeenCalledWith(testValue);
+  });
+
+  // Cleanup after each test
+  afterEach(() => {
+    fixture.destroy();
   });
 });
