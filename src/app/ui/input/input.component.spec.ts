@@ -9,7 +9,7 @@ describe('InputComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [InputComponent],
+      declarations: [],
       imports: [CommonModule, FormsModule],
     });
 
