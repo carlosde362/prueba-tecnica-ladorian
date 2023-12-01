@@ -1,6 +1,16 @@
 {
   "labels" : {
     "country": "País",
+    "continent": "Continente",
     "search_country": "Buscar por país"
+  },
+  "countries": {
+    "Asia": "Asia",
+    "Africa": "África",
+    "North America": "Norte de América",
+    "South America": "Sur de América",
+    "Europe": "Europa",
+    "Australia": "Australia",
+    "Antarctica": "Antártida"
   }
 }
