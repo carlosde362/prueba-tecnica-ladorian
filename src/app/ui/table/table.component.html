@@ -2,7 +2,7 @@
   <thead>
     <tr>
       <ng-container *ngFor="let header of headers">
-        <th>{{header}}</th>
+        <th>{{stringTranslate ? getTranslate(header): header}}</th>
       </ng-container>
     </tr>
   </thead>
