@@ -1,5 +1,5 @@
-import {Component, EventEmitter, forwardRef, Input, Output, OnInit} from '@angular/core';
-import {ControlValueAccessor, FormControl, FormsModule, NG_VALUE_ACCESSOR} from '@angular/forms';
+import {Component, EventEmitter, Input, Output, OnInit} from '@angular/core';
+import {FormsModule} from '@angular/forms';
 import {CommonModule} from "@angular/common";
 import {CardComponent} from "../card/card.component";
 import {TranslateService} from "../../core/services/translate.service";
