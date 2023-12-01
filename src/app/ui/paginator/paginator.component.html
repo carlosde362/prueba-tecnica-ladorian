@@ -1,7 +1,11 @@
 <div class="controls">
-  <button (click)="previousPage()" class="control" [disabled]="isFirstPage"><<</button>
+  <button (click)="previousPage()" class="control" [disabled]="isFirstPage">
+    <span class="material-icons">keyboard_double_arrow_left</span>
+  </button>
   <ng-container *ngFor="let page of pages">
     <button (click)="goToPage(page)" class="control" [class.page-active]="currentPage === page">{{page}}</button>
   </ng-container>
-  <button (click)="nextPage()" class="control" [disabled]="isLastPage">>></button>
+  <button (click)="nextPage()" class="control" [disabled]="isLastPage">
+    <span class="material-icons">keyboard_double_arrow_right</span>
+  </button>
 </div>
