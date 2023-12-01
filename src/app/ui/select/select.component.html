@@ -1,0 +1,23 @@
+<label>{{label}}</label>
+<div (click)="toogleShowOptions()" class="menu flex justify-between max-width-full width-full cursor-pointer">
+  {{placeholder}}
+  <span class="material-icons" *ngIf="!showOptions">expand_more</span>
+  <span class="material-icons" *ngIf="showOptions">expand_less</span>
+</div>
+
+  <div class="dropdown" [hidden]="!showOptions" *ngIf="multiple">
+    <ng-container *ngFor="let option of availableOptions">
+      <label class="option">
+        <input type="checkbox" [checked]="option.isChecked" (change)="change(option)"> <span>{{displayProperty ? getProperty(option.value): getTranslate(option.value)}}</span>
+      </label>
+    </ng-container>
+  </div>
+
+<div class="dropdown" [hidden]="!showOptions" *ngIf="!multiple">
+  <ng-container *ngFor="let option of availableOptions">
+    <label class="option" (click)="change(option)">
+      <span>{{displayProperty ? getProperty(option.value): getTranslate(option.value)}}</span>
+    </label>
+  </ng-container>
+</div>
+
