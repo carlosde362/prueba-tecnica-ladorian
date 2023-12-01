@@ -14,6 +14,7 @@ export type typesInput = 'text' | 'number' | 'search' | 'url'
 export class InputComponent {
   @Input() type: typesInput = 'text'
   @Input() placeholder!: string;
+  @Input() label!: string;
   @Input() isDisabled: boolean = false;
   @Input() regex!: RegExp;
   @Input() required: boolean = false;
