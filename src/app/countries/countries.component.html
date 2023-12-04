@@ -6,13 +6,14 @@
                type="search"
                formControlName="country"
                class="width-50"
-               (valueChange)="filterCountry()"></app-input>
+               (valueChange)="filter()"></app-input>
     <app-select [options]="availableContinent"
                 [multiple]="true"
+                formControlName="continent"
                 [stringTranslate]="'countries'"
                 [label]="'labels.continent' | translate"
                 class="width-50"
-                (selectionChange)="changeContinent($event)"
+                (selectionChange)="filter()"
                 [placeholder]="'Filtra'"></app-select>
   </section>
   <app-table [headers]="headers"

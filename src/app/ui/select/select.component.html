@@ -1,23 +1,30 @@
 <label>{{label}}</label>
-<div (click)="toogleShowOptions()" class="menu flex justify-between max-width-full width-full cursor-pointer">
-  {{placeholder}}
-  <span class="material-icons" *ngIf="!showOptions">expand_more</span>
-  <span class="material-icons" *ngIf="showOptions">expand_less</span>
+<div (click)="toogleShowOptions()" class="menu flex justify-between max-width-full width-full cursor-pointer" [class.disabled]="disabled">
+  {{concatOptionSelectedLabel || placeholder}}
+  <span class="material-icons" *ngIf="!showOptions && !disabled">expand_more</span>
+  <span class="material-icons" *ngIf="showOptions && !disabled">expand_less</span>
 </div>
 
   <div class="dropdown" [hidden]="!showOptions" *ngIf="multiple">
-    <ng-container *ngFor="let option of availableOptions">
-      <label class="option">
-        <input type="checkbox" [checked]="option.isChecked" (change)="change(option)"> <span>{{displayProperty ? getProperty(option.value): getTranslate(option.value)}}</span>
-      </label>
-    </ng-container>
+    <div class="options">
+      <ng-container *ngFor="let option of availableOptions">
+        <app-option [multiple]="multiple"
+                    [showValueDisplay]="displayProperty ? getProperty(option.value): getTranslate(option.value)"
+                    [checked]="option.isChecked"
+                    (selectionChange)="option.isChecked = $event;changeMultipleOptions()"
+                    [value]="option.value"></app-option>
+      </ng-container>
+    </div>
   </div>
 
 <div class="dropdown" [hidden]="!showOptions" *ngIf="!multiple">
-  <ng-container *ngFor="let option of availableOptions">
-    <label class="option" (click)="change(option)">
-      <span>{{displayProperty ? getProperty(option.value): getTranslate(option.value)}}</span>
-    </label>
-  </ng-container>
+  <div class="options">
+    <ng-container *ngFor="let option of availableOptions">
+      <app-option [multiple]="false"
+                  (selectionChange)="changeOption(option)"
+                  [showValueDisplay]="displayProperty ? getProperty(option.value): getTranslate(option.value)"
+                  [value]="option.value"></app-option>
+    </ng-container>
+  </div>
 </div>
 

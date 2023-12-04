@@ -20,6 +20,7 @@ import {SpinnerComponent} from "../ui/spinner/spinner.component";
   styleUrl: './countries.component.css'
 })
 export class CountriesComponent implements OnInit {
+  private static readonly EMPTY_STRING = '';
   private availableCountries!: CountryInfo[];
   availableContinent: string[] = Object.values(Continent);
   private _filterCountries!: CountryInfo[];
@@ -33,8 +34,8 @@ export class CountriesComponent implements OnInit {
 
   form = this.fb.group({
     country: new FormControl<string | null>(null),
-    continent: new FormControl<unknown>(['Asia'])
-  })
+    continent: new FormControl<Continent[]>([])
+  });
   get filterCountries() {
     return this._filterCountries;
   }
@@ -77,15 +78,26 @@ export class CountriesComponent implements OnInit {
     this.currentPaginator = {start: 0, end: this.ITEMS_PER_PAGE};
   }
 
-  filterCountry(): void {
-    const value: string = this.form.get('country')?.value as string;
-    this.filterCountries = this.availableCountries.filter((countryInfo: CountryInfo) => countryInfo.country.toLowerCase().includes(value.toLowerCase()))
+  filter(): void {
+    const countriesToFilter: string = this.form.get('country')?.value as string || CountriesComponent.EMPTY_STRING;
+    const continentToFilter = this.form.get('continent')?.value;
+    if (!countriesToFilter && (!continentToFilter || !(continentToFilter as Continent[])?.length)) {
+      this.resetResults();
+      return;
+    }
+
+    this.filterCountries = this.availableCountries.filter((countryInfo: CountryInfo) => {
+      return continentToFilter?.length ?
+        countryInfo.country.toLowerCase().includes(countriesToFilter.toLowerCase()) && continentToFilter?.includes(countryInfo.continent)
+        : countryInfo.country.toLowerCase().includes(countriesToFilter.toLowerCase())
+    });
+
     this.resetPaginator();
     this.changePaginator(this.currentPaginator);
   }
 
-  changeContinent(value: unknown[] | unknown) {
-    this.filterCountries = this.availableCountries.filter((countryInfo: CountryInfo) => (value as string[]).includes(countryInfo.continent));
+  resetResults(): void {
+    this.filterCountries = [...this.availableCountries];
     this.resetPaginator();
     this.changePaginator(this.currentPaginator);
   }
