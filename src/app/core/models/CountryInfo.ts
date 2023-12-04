@@ -5,7 +5,7 @@ export enum Continent {
   SOUTH_AMERICA = 'South America',
   ANTARCTICA = 'Antarctica',
   EUROPE = 'Europe',
-  AUSTRALIA = 'Australia'
+  OCEANIA = 'Oceania'
 }
 
 export interface CountryInfo {
