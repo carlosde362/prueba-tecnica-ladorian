@@ -1,0 +1,21 @@
+<div>
+  <ng-container *ngIf="!multiple">
+    <ng-container *ngTemplateOutlet="oneOption"></ng-container>
+  </ng-container>
+  <ng-container *ngIf="multiple">
+    <ng-container *ngTemplateOutlet="moreOptions"></ng-container>
+  </ng-container>
+</div>
+
+<ng-template #oneOption>
+  <label (click)="selectOneOption()" class="option">
+    <span>{{showValueDisplay}}</span>
+  </label>
+</ng-template>
+
+<ng-template #moreOptions>
+    <label class="option" [class.option_checked]="checked">
+        <input type="checkbox" [(ngModel)]="checked" (change)="toggleValue()">
+      <span>{{showValueDisplay}}</span>
+    </label>
+</ng-template>

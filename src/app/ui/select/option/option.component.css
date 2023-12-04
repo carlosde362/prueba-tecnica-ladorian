@@ -1,0 +1,18 @@
+@import "../../../../styles/variables.css";
+.option {
+  width: 100%;
+  padding: .5rem;
+  display: flex;
+  flex-direction: row;
+  gap: .3rem;
+}
+
+.option:not(.option_checked):hover {
+  background-color: #e0e0e0;
+  border-radius: 5px;
+}
+
+.option_checked {
+  background-color: var(--border-input);
+  border-radius: 5px;
+}
