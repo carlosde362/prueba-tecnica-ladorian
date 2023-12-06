@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpErrorResponse, HttpParams} from "@angular/common/http";
-import {catchError, Observable, throwError} from "rxjs";
+import {catchError, map, Observable, throwError} from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -9,8 +9,11 @@ export class GenericResourceService {
 
   constructor(private http: HttpClient) { }
 
-  serverRequest<T>(method: HttpMethod, url: string, options: RequestOptionsArgs = {}): Observable<T> {
-    return this.http.request<T>(method, url, options).pipe(catchError(this.handleError))
+  serverRequest<T, U>(method: HttpMethod,
+                   url: string,
+                   project: (input: T) => U,
+                   options: RequestOptionsArgs = {}): Observable<U> {
+    return this.http.request<T>(method, url, options).pipe(catchError(this.handleError), map(project))
   }
 
   private handleError(error: HttpErrorResponse): Observable<never> {
