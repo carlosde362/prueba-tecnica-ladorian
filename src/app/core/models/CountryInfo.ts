@@ -1,4 +1,4 @@
-export enum Continent {
+export enum ContinentEnum {
   ASIA = 'Asia',
   AFRICA = 'Africa',
   NORTH_AMERICA = 'North America',
@@ -8,8 +8,25 @@ export enum Continent {
   OCEANIA = 'Oceania'
 }
 
-export interface CountryInfo {
+export interface CountryInfoApi {
   country: string;
-  continent: Continent;
+  continent: ContinentEnum;
+}
+
+export class Continent {
+  continent: ContinentEnum;
+
+  constructor(continent: ContinentEnum) {
+    this.continent = continent;
+  }
+}
+
+export class Country extends Continent {
+  country: string;
+
+  constructor(continent: ContinentEnum, country: string) {
+    super(continent);
+    this.country = country
+  }
 }
 
