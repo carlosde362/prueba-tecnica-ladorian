@@ -5,7 +5,7 @@
   <span class="material-icons" *ngIf="showOptions && !disabled">expand_less</span>
 </div>
 
-  <div class="dropdown" [hidden]="!showOptions" *ngIf="multiple">
+  <div class="dropdown" *ngIf="multiple && showOptions">
     <div class="options">
       <ng-container *ngFor="let option of availableOptions">
         <app-option [multiple]="multiple"
@@ -17,7 +17,7 @@
     </div>
   </div>
 
-<div class="dropdown" [hidden]="!showOptions" *ngIf="!multiple">
+<div class="dropdown" *ngIf="!multiple && showOptions">
   <div class="options">
     <ng-container *ngFor="let option of availableOptions">
       <app-option [multiple]="false"
